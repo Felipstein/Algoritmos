@@ -4,21 +4,22 @@ import java.util.Arrays;
 import java.util.Random;
 
 import br.lois.algoritmos.sort.BubbleSort;
+import br.lois.algoritmos.sort.SortAlgorithm;
 import br.lois.algoritmos.sort.SortType;
 
 public class Main {
 	
 	/*
-	 * Isso pode prejudicar muito o desempenho!
+	 * Isso irá prejudicar muito o desempenho!
 	 */
-	public static final boolean PRINT_PROCESS = false;
+	public static final boolean PRINT_PROCESS = true;
 	
 	public static void main(String[] args) {
 		
-		int[] array = generateRandomArray(200);
+		int[] array = generateRandomArray(300);
 		System.out.println("Desordenado: \n" + Arrays.toString(array) + "\n");
 		
-		BubbleSort sort = new BubbleSort(array);
+		SortAlgorithm sort = new BubbleSort(array);
 		
 		long initTime = System.currentTimeMillis();
 		System.out.println("Bubble Sort: \n" + Arrays.toString(sort.sort(SortType.ASCENDING)) + "\n");

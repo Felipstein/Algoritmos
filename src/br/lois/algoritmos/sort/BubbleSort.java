@@ -14,16 +14,26 @@ public class BubbleSort implements SortAlgorithm {
 	
 	@Override
 	public int[] sort(SortType sortType) {
-		int length = array.length;
-		int[] sorted = Arrays.copyOf(array, length);
+		int[] sorted = Arrays.copyOf(array, array.length);
+		this.doubleForModel(sortType, sorted);
+		return sorted;
+	}
+	
+	/*
+	 * Utiliza o modelo de duplo fores para trabalhar na operação.
+	 */
+	void doubleForModel(SortType sortType, int[] sorted) {
+		int length;
+		int flexibleLength = length = sorted.length;
 		for(int i = 0; i < length; ++i) {
 			boolean swapped = false;
-			for(int j = 0; j < length - 1; ++j) {
+			flexibleLength--; // Para aumentar o desempenho.
+			for(int j = 0; j < flexibleLength; ++j) {
 				if(sortType == SortType.ASCENDING ? sorted[j] > sorted[j + 1] : sorted[j] < sorted[j + 1]) {
 					int aux = sorted[j];
 					sorted[j] = sorted[j + 1];
 					sorted[j + 1] = aux;
-					swapped = true;
+					swapped = true; // Para aumentar o desempenho².
 				}
 				if(Main.PRINT_PROCESS) {
 					System.out.println("index " + i + "/" + (length - 1) + "|" + j + ": " + Arrays.toString(sorted));
@@ -33,7 +43,29 @@ public class BubbleSort implements SortAlgorithm {
 				break;
 			}
 		}
-		return sorted;
+	}
+	
+	/*
+	 * Utiliza o modelo de um do...while e um for para trabalhar na operação.
+	 */
+	void whileModel(SortType sortType, int[] sorted) {
+		boolean swapped = false;
+		int length = sorted.length;
+		do {
+			length--; // Para aumentar o desempenho.
+			swapped = false;
+			for(int i = 0; i < length; ++i) {
+				if(sortType == SortType.ASCENDING ? sorted[i] > sorted[i + 1] : sorted[i] < sorted[i + 1]) {
+					int aux = sorted[i];
+					sorted[i] = sorted[i + 1];
+					sorted[i + 1] = aux;
+					swapped = true; // Para aumentar o desempenho².
+				}
+				if(Main.PRINT_PROCESS) {
+					System.out.println("[" + length + "] index " + i + "/" + (length - 1) + ": " + Arrays.toString(sorted));
+				}
+			}
+		} while(swapped);
 	}
 	
 	public int[] getArray() {
