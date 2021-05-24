@@ -2,14 +2,13 @@ package br.lois.algoritmos.sort;
 
 import java.util.Arrays;
 
+import br.lois.algoritmos.Algorithm;
 import br.lois.algoritmos.Main;
 
-public class BubbleSort implements SortAlgorithm {
-	
-	private int[] array;
+public class BubbleSort extends Algorithm implements SortAlgorithm {
 	
 	public BubbleSort(int[] array) {
-		this.array = array;
+		super(array);
 	}
 	
 	@Override
@@ -66,10 +65,6 @@ public class BubbleSort implements SortAlgorithm {
 				}
 			}
 		} while(swapped);
-	}
-	
-	public int[] getArray() {
-		return array;
 	}
 	
 }
