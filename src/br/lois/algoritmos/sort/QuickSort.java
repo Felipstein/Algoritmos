@@ -3,6 +3,7 @@ package br.lois.algoritmos.sort;
 import java.util.Arrays;
 
 import br.lois.algoritmos.Algorithm;
+import br.lois.algoritmos.Main;
 
 public class QuickSort extends Algorithm implements SortAlgorithm {
 	
@@ -28,6 +29,9 @@ public class QuickSort extends Algorithm implements SortAlgorithm {
 	private int partition(int[] array, int initIndex, int endIndex) {
 		int i = initIndex;
 		for(int j = initIndex; j < endIndex; ++j) {
+			if(Main.PRINT_PROCESS) {
+				System.out.println("[" + j + "/" + (endIndex - 1) + "]: " + Arrays.toString(array));
+			}
 			if(array[j] <= array[endIndex]) {
 				int aux = array[j];
 				array[j] = array[i];
