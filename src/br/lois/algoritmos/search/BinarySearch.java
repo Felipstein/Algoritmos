@@ -20,15 +20,15 @@ public class BinarySearch extends Algorithm implements SearchAlgorithm {
 	/*
 	 * Modelo repecursivo.
 	 */
-	int repercusiveMode(int value, int initIndex, int finalIndex) {
-		if(initIndex <= finalIndex) {
-			int midIndex = (initIndex + finalIndex) / 2;
+	int repercusiveMode(int value, int initIndex, int endIndex) {
+		if(initIndex <= endIndex) {
+			int midIndex = (initIndex + endIndex) / 2;
 			int midValue = array[midIndex];
-			System.out.println("[Repercusivo] init index: " + initIndex + " - final index: " + finalIndex + " - mid index: " + midIndex + " - value: " + midValue + " == " + value + " ? " + (midValue == value));
+			System.out.println("[Repercusivo] init index: " + initIndex + " - final index: " + endIndex + " - mid index: " + midIndex + " - value: " + midValue + " == " + value + " ? " + (midValue == value));
 			if(new Integer(value).compareTo(midValue) < 0) {
 				return repercusiveMode(value, initIndex, midIndex - 1);
 			} else if(new Integer(value).compareTo(midValue) > 0) {
-				return repercusiveMode(value, midIndex + 1, finalIndex);
+				return repercusiveMode(value, midIndex + 1, endIndex);
 			} else {
 				return midIndex;
 			}
