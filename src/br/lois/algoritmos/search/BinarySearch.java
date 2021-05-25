@@ -14,21 +14,13 @@ public class BinarySearch extends Algorithm implements SearchAlgorithm {
 	
 	@Override
 	public int indexOf(int value) {
-		return -1;
-	}
-	
-	public int a(int value, boolean a) {
-		if(a) {
-			return repercusiveMode(value, 0, array.length - 1);
-		} else {
-			return whileMode(value, 0, array.length - 1);
-		}
+		return repercusiveMode(value, 0, array.length - 1);
 	}
 	
 	/*
 	 * Modelo repecursivo.
 	 */
-	private int repercusiveMode(int value, int initIndex, int finalIndex) {
+	int repercusiveMode(int value, int initIndex, int finalIndex) {
 		if(initIndex <= finalIndex) {
 			int midIndex = (initIndex + finalIndex) / 2;
 			int midValue = array[midIndex];
@@ -48,7 +40,7 @@ public class BinarySearch extends Algorithm implements SearchAlgorithm {
 	/*
 	 * Modelo while.
 	 */
-	private int whileMode(int value, int initIndex, int finalIndex) {
+	int whileMode(int value, int initIndex, int finalIndex) {
 		while(initIndex <= finalIndex) {
 			int midIndex = (initIndex + finalIndex) / 2;
 			int midValue = array[midIndex];

@@ -5,6 +5,6 @@ public interface SortAlgorithm {
 	/**
 	 * @return uma cópia ordenada da array desejada.
 	 */
-	int[] sort(SortType sortType);
+	int[] sort();
 	
 }

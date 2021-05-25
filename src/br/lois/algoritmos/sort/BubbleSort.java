@@ -5,6 +5,9 @@ import java.util.Arrays;
 import br.lois.algoritmos.Algorithm;
 import br.lois.algoritmos.Main;
 
+/*
+ * Em uma busca por 200000 elementos, no meu teste demorou em média 59172 milissegundos.
+ */
 public class BubbleSort extends Algorithm implements SortAlgorithm {
 	
 	public BubbleSort(int[] array) {
@@ -12,23 +15,23 @@ public class BubbleSort extends Algorithm implements SortAlgorithm {
 	}
 	
 	@Override
-	public int[] sort(SortType sortType) {
+	public int[] sort() {
 		int[] sorted = Arrays.copyOf(array, array.length);
-		this.doubleForModel(sortType, sorted);
+		this.doubleForModel(sorted);
 		return sorted;
 	}
 	
 	/*
 	 * Utiliza o modelo de duplo fores para trabalhar na operação.
 	 */
-	void doubleForModel(SortType sortType, int[] sorted) {
+	void doubleForModel(int[] sorted) {
 		int length;
 		int flexibleLength = length = sorted.length;
 		for(int i = 0; i < length; ++i) {
 			boolean swapped = false;
 			flexibleLength--; // Para aumentar o desempenho.
 			for(int j = 0; j < flexibleLength; ++j) {
-				if(sortType == SortType.ASCENDING ? sorted[j] > sorted[j + 1] : sorted[j] < sorted[j + 1]) {
+				if(sorted[j] > sorted[j + 1]) {
 					int aux = sorted[j];
 					sorted[j] = sorted[j + 1];
 					sorted[j + 1] = aux;
@@ -47,14 +50,14 @@ public class BubbleSort extends Algorithm implements SortAlgorithm {
 	/*
 	 * Utiliza o modelo de um do...while e um for para trabalhar na operação.
 	 */
-	void whileModel(SortType sortType, int[] sorted) {
+	void whileModel(int[] sorted) {
 		boolean swapped = false;
 		int length = sorted.length;
 		do {
 			length--; // Para aumentar o desempenho.
 			swapped = false;
 			for(int i = 0; i < length; ++i) {
-				if(sortType == SortType.ASCENDING ? sorted[i] > sorted[i + 1] : sorted[i] < sorted[i + 1]) {
+				if(sorted[i] > sorted[i + 1]) {
 					int aux = sorted[i];
 					sorted[i] = sorted[i + 1];
 					sorted[i + 1] = aux;
